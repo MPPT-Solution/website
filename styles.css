@@ -1,0 +1,827 @@
+/* ============================================================
+   styles.css – Project Name
+   Shared stylesheet for all pages.
+
+   TABLE OF CONTENTS
+   1.  Design Tokens (CSS variables)
+   2.  Base / Reset
+   3.  Navbar
+   4.  Page Headers  (interior pages)
+   5.  Hero  (homepage only)
+   6.  Buttons
+   7.  Section Titles
+   8.  Objectives Section  (homepage only)
+   9.  Timeline  (homepage only)
+   10. Funders  (homepage only)
+   11. Team Cards  (about page)
+   12. News Cards  (news page)
+   13. Article Page
+   14. Footer
+   ============================================================ */
+
+
+/* ============================================================
+   1. DESIGN TOKENS
+   Edit the values here to retheme the entire site at once.
+
+   Primary palette (from brand guidelines):
+     --teal-deep   #467D7A  darkest teal – deep accents
+     --teal-mid    #1C918B  mid teal – dates, strong accents
+     --teal        #43B3AE  logo verdigris – primary brand colour
+     --teal-soft   #8EBDBB  muted teal – borders
+     --teal-light  #D4EFEE  lightest teal tint – section backgrounds
+     --amber       #F7A400  logo orange – highlight / CTA
+     --amber-dark  #c98800  amber hover state
+     --grey-dark   #333333  logo grey – navbar & footer
+     --grey-mid    #575757  secondary / muted text
+     --grey-light  #EDEDED  light section backgrounds
+   ============================================================ */
+:root {
+  --teal-deep:  #467D7A;
+  --teal-mid:   #1C918B;
+  --teal:       #43B3AE;
+  --teal-soft:  #8EBDBB;
+  --teal-light: #D4EFEE;
+  --amber:      #F7A400;
+  --amber-dark: #c98800;
+  --grey-dark:  #333333;
+  --grey-mid:   #575757;
+  --grey-light: #EDEDED;
+  --white:      #ffffff;
+  --text:       #333333;
+  --muted:      #575757;
+  --font-head:  'Lora', Georgia, serif;
+  --font-body:  'Source Sans 3', sans-serif;
+}
+
+
+/* ============================================================
+   2. BASE / RESET
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: #000000;
+}
+
+a {
+  color: var(--teal-mid);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--amber-dark);
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   3. NAVBAR
+   ============================================================ */
+.navbar {
+  background: var(--grey-dark);
+  padding: 0.75rem 0;
+}
+
+.navbar-brand {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--white) !important;
+  letter-spacing: 0.02em;
+}
+
+.navbar-brand span {
+  color: var(--amber);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--amber) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom hamburger icon colour to match dark navbar */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* ============================================================
+   4. PAGE HEADERS
+   Used on interior pages: News, About, and article pages.
+   ============================================================ */
+.page-header {
+  background: var(--grey-dark);
+  color: var(--white);
+  padding: 3.5rem 0 2.5rem;
+  position: relative;
+}
+
+/* Teal → amber gradient accent bar at the very top */
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+
+.page-header h1 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+
+/* ============================================================
+   5. HERO  (homepage)
+   ============================================================ */
+.hero {
+  background: var(--grey-dark);
+  color: var(--white);
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 span {
+  color: var(--amber);
+}
+
+.hero p.lead {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.hero-img-wrap {
+  width: 100%;
+  max-width: 529px;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Disabled for now */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.00);
+  border: 0px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-img-wrap img {
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* ============================================================
+   6. BUTTONS
+   ============================================================ */
+
+/* Primary filled button – used for main CTAs */
+.btn-brand {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-brand:hover {
+  background: var(--teal-mid);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Outlined button – used for "Back to News" and secondary actions */
+.btn-outline-brand {
+  display: inline-block;
+  background: transparent;
+  color: var(--teal-mid);
+  border: 2px solid var(--teal);
+  padding: 0.65rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn-outline-brand:hover {
+  background: var(--teal);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   7. SECTION TITLES
+   ============================================================ */
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Amber underline accent */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--amber);
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
+/* Centred variant – used in the Funders section */
+.section-title.centered::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+
+/* ============================================================
+   8. OBJECTIVES SECTION  (homepage)
+   ============================================================ */
+.objectives-section {
+  background: var(--teal-light);
+  padding: 5rem 0;
+}
+
+.objectives-section p {
+  max-width: 780px;
+  margin-bottom: 1.5rem;
+}
+
+/* Styled list for objectives */
+.objectives-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 780px;
+}
+
+.objectives-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.85rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+/* Teal bullet using an amber square accent */
+.objectives-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   9. TIMELINE  (homepage)
+   ============================================================ */
+.timeline-section {
+  background: var(--grey-light);
+  padding: 5rem 0;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+/* Vertical spine – mobile: left-anchored */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--teal), var(--amber));
+}
+
+/* Vertical spine – desktop: centred */
+@media (min-width: 768px) {
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 60px;
+}
+
+/* Dot marker on the spine */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--amber);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--teal);
+  z-index: 1;
+}
+
+/* Alternating left/right layout on desktop */
+@media (min-width: 768px) {
+  .timeline-item {
+    width: 50%;
+    padding-left: 0;
+    padding-right: 60px;
+    margin-bottom: 3.5rem;
+  }
+
+  .timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 60px;
+  }
+
+  .timeline-item::before {
+    left: auto;
+    right: -9px;
+  }
+
+  .timeline-item:nth-child(even)::before {
+    right: auto;
+    left: -9px;
+  }
+}
+
+.timeline-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+
+.timeline-card:hover {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.timeline-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.timeline-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  color: #000;
+}
+
+.timeline-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+
+/* ============================================================
+   10. FUNDERS  (homepage)
+   ============================================================ */
+.funders-section {
+  padding: 5rem 0;
+  background: var(--white);
+}
+
+.funder-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.funder-logo-wrap:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.funder-logo-wrap img {
+  max-height: 60px;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+/* Placeholder shown before real logos are added */
+.funder-placeholder {
+  background: var(--teal-light);
+  border: 2px dashed var(--teal-soft);
+  border-radius: 6px;
+  width: 160px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--teal-deep);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   11. TEAM CARDS  (about page)
+   ============================================================ */
+.team-section {
+  background: var(--grey-light);
+  padding: 5rem 0;
+}
+
+.team-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  height: 100%;
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+
+.team-card:hover {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.team-card-img-wrap {
+  overflow: hidden;
+  height: 400px;
+  background: var(--teal-light);
+}
+
+.team-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.team-card-body {
+  padding: 1.25rem 1.5rem 1.75rem;
+}
+
+.team-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+  color: #000;
+}
+
+.team-card-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 0.85rem;
+}
+
+.team-card p {
+  font-size: 0.93rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+
+/* ============================================================
+   12. NEWS CARDS  (news page)
+   ============================================================ */
+.news-section {
+  padding: 4rem 0 5rem;
+  background: var(--grey-light);
+}
+
+.news-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+  transform: translateY(-3px);
+}
+
+.news-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.news-card-body {
+  padding: 1.25rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 0.4rem;
+}
+
+.news-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: #000;
+}
+
+.news-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.news-read-more {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--teal-mid);
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 1px;
+  transition: color 0.2s;
+}
+
+.news-read-more:hover {
+  color: var(--amber-dark);
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   13. ARTICLE PAGE
+   ============================================================ */
+.article-header {
+  background: var(--grey-dark);
+  color: var(--white);
+  padding: 4rem 0 3rem;
+  position: relative;
+}
+
+.article-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+
+/* Breadcrumb trail */
+.article-breadcrumb {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1rem;
+}
+
+.article-breadcrumb a {
+  color: var(--teal);
+}
+
+.article-breadcrumb a:hover {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.article-breadcrumb span {
+  margin: 0 0.4rem;
+}
+
+.article-header h1 {
+  color: var(--white);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1.25;
+  max-width: 780px;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.article-meta .meta-date {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.meta-divider {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  vertical-align: middle;
+}
+
+.article-hero-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.img-caption {
+  font-size: 0.83rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  background: var(--grey-light);
+  font-style: italic;
+}
+
+.article-body {
+  padding: 3.5rem 0 2rem;
+}
+
+/* Constrain body text to a comfortable reading width */
+.article-content {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Pull quote */
+.article-content blockquote {
+  border-left: 4px solid var(--teal);
+  background: var(--teal-light);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--teal-deep);
+}
+
+.article-content blockquote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+/* Inline images inside article body */
+.article-img-wrap {
+  margin: 2.5rem 0;
+}
+
+.article-img-wrap img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.article-img-wrap figcaption {
+  font-size: 0.83rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+/* Sub-headings within the article */
+.article-content h2 {
+  font-size: 1.45rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--grey-light);
+}
+
+/* "Back to News" row at the bottom of an article */
+.back-section {
+  padding: 2rem 0 4rem;
+  text-align: center;
+}
+
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+footer {
+  background: var(--grey-dark);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 2.5rem 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--teal);
+}
+
+footer a:hover {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.footer-brand {
+  color: var(--white);
+  font-family: var(--font-head);
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.12);
+  margin: 1.25rem 0;
+}
